@@ -1,0 +1,15 @@
+@use "../mixins/" as *;
+
+$fontPrimary: "Krub";
+$fontSecondary: "Rubik";
+
+// 
+
+@include font-woff2($fontPrimary, "/src/assets/fonts/#{$fontPrimary}-Medium", 500, normal);
+@include font-woff2($fontPrimary, "/src/assets/fonts/#{$fontPrimary}-MediumItalic", 500, normal);
+@include font-woff2($fontPrimary, "/src/assets/fonts/#{$fontPrimary}-SemiBold", 600, normal);
+
+@include font-woff2($fontSecondary, "/src/assets/fonts/#{$fontSecondary}-Regular", 400, normal);
+@include font-woff2($fontSecondary, "/src/assets/fonts/#{$fontSecondary}-Medium", 500, normal);
+@include font-woff2($fontSecondary, "/src/assets/fonts/#{$fontSecondary}-SemiBold", 600, normal);
+@include font-woff2($fontSecondary, "/src/assets/fonts/#{$fontSecondary}-Bold", 700, normal);

@@ -1,0 +1,30 @@
+@use '../../../../styles/mixins/' as*;
+
+.services {
+  & {
+    @include size('padding-block', 80, 40);
+  }
+
+  &__title {
+    font-family: var(--ff-secondary);
+    text-align: center;
+    margin-block: 0 70px;
+    font-size: 55px;
+    font-weight: 700;
+
+    @include rmax($lg) {
+      margin-block: 0 30px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+
+    @include rmax($xl) {
+      justify-content: center;
+    }
+  }
+}

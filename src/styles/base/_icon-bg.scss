@@ -1,0 +1,67 @@
+.icon-bg {
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: '';
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.icon-logistic {
+  &::before {
+    background-image: url('/src/assets/icons/logistic.svg');
+  }
+}
+
+.icon-car {
+  &::before {
+    background-image: url('/src/assets/icons/car.svg');
+  }
+}
+
+.icon-car--2 {
+  &::before {
+    background-image: url('/src/assets/icons/car-2.svg');
+  }
+}
+
+.icon-environment {
+  &::before {
+    background-image: url('/src/assets/icons/environment.svg');
+  }
+}
+
+.icon-sheild {
+  &::before {
+    background-image: url('/src/assets/icons/sheild.svg');
+  }
+}
+
+.icon-package {
+  &::before {
+    background-image: url('/src/assets/icons/package.svg');
+  }
+}
+
+.icon-truck {
+  &::before {
+    background-image: url('/src/assets/icons/truck.svg');
+  }
+}
+
+.icon-truck-1 {
+  &::before {
+    background-image: url('/src/assets/icons/truck-1.svg');
+  }
+}
+
+.icon-truck-2 {
+  &::before {
+    background-image: url('/src/assets/icons/truck-2.svg');
+  }
+}

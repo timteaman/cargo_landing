@@ -1,0 +1,80 @@
+@use './../../../styles/mixins/' as*;
+
+.truck-animation {
+  position: relative;
+  padding-block: 60px;
+  overflow: hidden;
+
+  &__line {
+    position: absolute;
+    width: 100%;
+    bottom: 34px;
+    transform: scale3d(7, 2, 1);
+    border: 1px dashed var(--c-neutral-black);
+  }
+
+  &__item {
+    position: absolute;
+    bottom: 0;
+    transition: transform 0.5s ease;
+
+    &::before {
+      width: 100px;
+      height: 60px;
+      @include bg-cover;
+    }
+
+    &--left {
+      bottom: 40px;
+      left: -60px;
+      animation: moveLeft 30s linear infinite;
+    }
+
+    &--right {
+      right: -60px;
+      animation: moveRight 30s linear infinite;
+    }
+  }
+}
+
+@keyframes moveLeft {
+  0% {
+    left: -60px;
+    transform: scaleX(1);
+  }
+
+  50% {
+    left: calc(100% + 60px);
+    transform: scaleX(1);
+  }
+
+  51% {
+    transform: scaleX(-1);
+  }
+
+  100% {
+    left: -60px;
+    transform: scaleX(-1);
+  }
+}
+
+@keyframes moveRight {
+  0% {
+    right: -60px;
+    transform: scaleX(-1);
+  }
+
+  50% {
+    right: calc(100% + 60px);
+    transform: scaleX(-1);
+  }
+
+  51% {
+    transform: scaleX(1);
+  }
+
+  100% {
+    right: -60px;
+    transform: scaleX(1);
+  }
+}
