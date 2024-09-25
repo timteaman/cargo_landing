@@ -28,11 +28,18 @@ document.addEventListener('click', (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const section = document.querySelector('.how-work');
-  new IntersectionObserver((entries, observer) => {
-    if (entries[0].isIntersecting) {
-      section.classList.add('how-work--active');
-      section.classList.remove('how-work--hide');
-      observer.disconnect();
-    }
-  }).observe(section);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        section.classList.add('how-work--active');
+        section.classList.remove('how-work--hide');
+      } else {
+        section.classList.remove('how-work--active');
+        section.classList.add('how-work--hide');
+      }
+    });
+  });
+
+  observer.observe(section);
 });

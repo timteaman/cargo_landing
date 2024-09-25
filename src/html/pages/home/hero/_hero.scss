@@ -11,14 +11,32 @@
     height: 806px;
     max-width: 560px;
     width: 100%;
+    color: var(--c-white);
+    font-family: var(--ff-secondary);
+  }
+
+  &__subtitle {
+    position: relative;
+    font-size: 20px;
+    margin-block: 10px;
+
+    &::before {
+      content: '';
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      bottom: 0;
+      left: -16px;
+      height: 100%;
+      width: 6px;
+      background-color: var(--c-my-sin);
+    }
   }
 
   &__title {
     margin-block: 0 40px;
     font-size: 60px;
     font-weight: 700;
-    font-family: var(--ff-secondary);
-    color: var(--c-white);
     line-height: 1;
     position: relative;
 
@@ -34,7 +52,6 @@
   }
 
   &__text {
-    color: var(--c-white);
     font-size: 22px;
   }
 }
