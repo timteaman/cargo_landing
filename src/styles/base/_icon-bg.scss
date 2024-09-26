@@ -18,6 +18,12 @@
   }
 }
 
+.icon-logistic-2 {
+  &::before {
+    background-image: url('/src/assets/icons/logistic-2.svg');
+  }
+}
+
 .icon-car {
   &::before {
     background-image: url('/src/assets/icons/car.svg');

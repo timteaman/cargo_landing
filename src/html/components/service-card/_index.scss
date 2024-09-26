@@ -2,6 +2,7 @@
 
 .service-card {
   display: flex;
+  width: fit-content;
   position: relative;
   border: 2px solid var(--c-wild-sand);
 
@@ -45,6 +46,6 @@
   }
 
   &__text {
-    text-align: left;
+    text-align: center;
   }
 }

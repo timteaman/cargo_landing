@@ -1,8 +1,18 @@
 @use '../../../../styles/mixins/' as*;
 
 .services {
+  display: flex;
+  justify-content: center;
+  padding: 0 20px 20px 20px;
+
   & {
     @include size('padding-block', 80, 20);
+  }
+
+  &__inner {
+    text-align: center;
+    max-width: 1440px;
+    width: 100%;
   }
 
   &__title {
@@ -10,14 +20,17 @@
   }
 
   &__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
 
-    @include rmax($xl) {
+    @include rmax(1500) {
+      grid-template-columns: repeat(2, auto);
       justify-content: center;
-      gap: 20px;
+    }
+
+    @include rmax($md) {
+      grid-template-columns: repeat(1, auto);
     }
   }
 }
