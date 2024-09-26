@@ -5,7 +5,7 @@
   padding-inline: 20px;
 
   & {
-    @include size('padding-block', 80, 40);
+    @include size('padding-block', 80, 20);
   }
 
   &__wrapper {
@@ -14,22 +14,15 @@
     flex-direction: column;
   }
 
-  &__title {
-    font-size: 55px;
-    font-family: var(--ff-secondary);
-    font-weight: 600;
-    margin-block: 35px;
-  }
-
   &__inner {
-    max-width: 1440px;
-    width: 100%;
-    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: minmax(100px, auto);
     grid-auto-flow: dense;
     gap: 10px;
+    max-width: 1440px;
+    width: 100%;
+    position: relative;
 
     @include rmax($lg) {
       display: flex;
@@ -59,11 +52,11 @@
 
   &__subtitle {
     margin-block: 10px;
+    justify-content: center;
+    gap: 10px;
     font-size: 25px;
     font-weight: 500;
     font-family: var(--ff-secondary);
-    justify-content: center;
-    gap: 10px;
 
     &::before {
       background-color: var(--c-my-sin);
@@ -71,12 +64,13 @@
   }
 
   &__text {
+    margin-bottom: 20px;
     text-align: left;
     font-size: 22px;
-    margin-bottom: 20px;
 
     &>span {
-      text-decoration: underline;
+      position: relative;
+      font-weight: 700px;
     }
   }
 
@@ -85,7 +79,9 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
 
-    @include rmax($xl) {}
+    @include rmax($xs) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__benefits {
@@ -94,8 +90,6 @@
 
     &::before {
       background-color: var(--c-my-sin);
-      height: 36px;
-      width: 36px;
     }
   }
 }

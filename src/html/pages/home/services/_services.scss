@@ -2,19 +2,11 @@
 
 .services {
   & {
-    @include size('padding-block', 80, 40);
+    @include size('padding-block', 80, 20);
   }
 
   &__title {
-    font-family: var(--ff-secondary);
     text-align: center;
-    margin-block: 0 70px;
-    font-size: 55px;
-    font-weight: 700;
-
-    @include rmax($lg) {
-      margin-block: 0 30px;
-    }
   }
 
   &__list {
@@ -25,6 +17,7 @@
 
     @include rmax($xl) {
       justify-content: center;
+      gap: 20px;
     }
   }
 }

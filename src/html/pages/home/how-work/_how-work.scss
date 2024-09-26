@@ -18,7 +18,7 @@
   }
 
   & {
-    @include size('padding-block', 80, 40);
+    @include size('padding-block', 80, 20);
   }
 
   &__inner {
@@ -32,23 +32,8 @@
     font-size: 14px;
 
     &::before {
-      content: '';
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      bottom: 0;
       left: -16px;
-      height: 100%;
-      width: 6px;
-      background-color: var(--c-my-sin);
     }
-  }
-
-  &__title {
-    margin-block: 0 35px;
-    font-size: 35px;
-    font-family: var(--ff-secondary);
-    font-weight: 600;
   }
 
   &__wrapper {
@@ -78,6 +63,7 @@
     flex-direction: column;
 
     @include rmax($xl) {
+      gap: 20px;
       background-color: rgba(#F4F4F4, 0.8);
     }
   }

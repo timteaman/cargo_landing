@@ -4,6 +4,10 @@
   background-image: url('/src/assets/images/hero-bg.webp');
   @include bg-cover;
 
+  @include rmax($xl) {
+    background-position: 70% center;
+  }
+
   &__inner {
     display: flex;
     flex-direction: column;
@@ -21,15 +25,7 @@
     margin-block: 10px;
 
     &::before {
-      content: '';
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      bottom: 0;
       left: -16px;
-      height: 100%;
-      width: 6px;
-      background-color: var(--c-my-sin);
     }
   }
 
@@ -41,13 +37,8 @@
     position: relative;
 
     &::before {
-      content: '';
-      position: absolute;
       bottom: -24px;
-      left: 0;
       height: 6px;
-      width: 100%;
-      background-color: var(--c-my-sin);
     }
   }
 
