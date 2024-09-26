@@ -5,7 +5,15 @@
   @include bg-cover;
 
   @include rmax($xl) {
-    background-position: 70% center;
+    background-image: url('/src/assets/images/hero-bg--xl.webp');
+  }
+
+  @include rmax($md) {
+    background-image: url('/src/assets/images/hero-bg--md.webp');
+  }
+
+  @include rmax($xs) {
+    background-image: url('/src/assets/images/hero-bg--xs.webp');
   }
 
   &__inner {
