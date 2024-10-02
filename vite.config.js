@@ -1,9 +1,10 @@
+import { defineConfig } from 'vite';
 import vituum from 'vituum';
 import posthtml from '@vituum/vite-plugin-posthtml';
 import postcss from '@vituum/vite-plugin-postcss';
-import { copyFileSync } from 'fs';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
-export default {
+export default defineConfig({
   server: {
     host: true,
     port: 5173,
@@ -13,6 +14,14 @@ export default {
     postcss(),
     posthtml({
       root: './src',
+    }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'src/assets/favicon/**/*',
+          dest: '',
+        },
+      ],
     }),
     {
       name: 'custom-hmr',
@@ -26,78 +35,41 @@ export default {
         }
       },
     },
-    {
-      name: 'copy-static-files',
-      writeBundle() {
-        copyFileSync(
-          'src/assets/favicon/favicon-32x32.png',
-          'dist/favicon-32x32.png'
-        );
-        copyFileSync(
-          'src/assets/favicon/favicon-16x16.png',
-          'dist/favicon-16x16.png'
-        );
-        copyFileSync(
-          'src/assets/favicon/apple-touch-icon.png',
-          'dist/apple-touch-icon.png'
-        );
-        copyFileSync(
-          'src/assets/favicon/android-chrome-192x192.png',
-          'dist/android-chrome-192x192.png'
-        );
-        copyFileSync(
-          'src/assets/favicon/android-chrome-512x512.png',
-          'dist/android-chrome-512x512.png'
-        );
-        copyFileSync(
-          'src/assets/favicon/site.webmanifest',
-          'dist/site.webmanifest'
-        );
-      },
-    },
   ],
 
   build: {
     root: './src',
-    sourcemap: true,
+    manifest: true,
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
     rollupOptions: {
       output: {
         assetFileNames: (asset) => {
-          const filePath = asset.name.split('/');
-          const fileName = filePath.pop();
-          const nestedPath = filePath.join('/');
-          const outputPath = `${
-            nestedPath ? nestedPath + '/' : ''
-          }[name][extname]`;
-
-          if (
-            asset.name.includes('favicon') ||
-            asset.name.includes('apple-touch-icon') ||
-            asset.name.includes('android-chrome')
-          ) {
-            return `${outputPath}`;
-          }
-
-          if (asset.type === 'asset') {
-            switch (asset.name.split('.').pop()) {
-              case 'css':
-                return `css/${outputPath}`;
-              case 'png':
-              case 'jpg':
-              case 'webp':
-              case 'svg':
-                return `images/${outputPath}`;
-              case 'woff2':
-                return `fonts/${outputPath}`;
-              case 'webmanifest':
-                return `${outputPath}`;
-              default:
-                return `other/${outputPath}`;
-            }
+          const extension = asset.name.split('.').pop();
+          switch (extension) {
+            case 'css':
+              return 'css/[name].[hash][extname]';
+            case 'png':
+            case 'jpg':
+            case 'webp':
+            case 'svg':
+              return 'images/[name].[hash][extname]';
+            case 'woff2':
+              return 'fonts/[name].[hash][extname]';
+            case 'webmanifest':
+            case 'ico':
+              return 'icons/[name].[hash][extname]';
+            default:
+              return 'assets/[name][extname]';
           }
         },
-        preserveModuleDirectories: true,
+        preserveEntrySignatures: 'strict',
       },
     },
   },
-};
+});

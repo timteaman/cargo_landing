@@ -1,4 +1,4 @@
-// fixed header
+// main.js
 document.addEventListener('DOMContentLoaded', () => {
   const headerEl = document.querySelector('.header');
   window.addEventListener('scroll', () => {
@@ -8,13 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   });
 
-  // burger
   const burgerBtnEl = document.querySelector('.burger');
   burgerBtnEl.addEventListener('click', () => {
     burgerBtnEl.classList.toggle('burger--active');
   });
 
-  // close mobile menu if click
   const menuEl = document.querySelector('.menu');
   menuEl.addEventListener('click', (e) => {
     if (e.target.classList.contains('menu__link')) {
@@ -23,11 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // animation section how-work
+  // dinamic load animation 'how-work'
   const section = document.querySelector('.how-work');
-  const observer = new IntersectionObserver(([entry]) => {
-    section.classList.toggle('how-work--active', entry.isIntersecting);
-    section.classList.toggle('how-work--hide', !entry.isIntersecting);
-  });
-  observer.observe(section);
+  if (section) {
+    import('./animateHowWork.js').then((module) => {
+      module.animateSection(section);
+    });
+  }
 });
